@@ -23,6 +23,21 @@ stackInfo.median = median(stack,3);
 %std only works on single/double
 stackInfo.std    = std(single(stack),0,3);
 
+% The color bar should be adjusted to the first image, we still
+% take the first five, in case the first one is artefact-ridden
+% double is needed as median keeps the data type of the array,
+% which is "unit16" that can´t be displayed later in StackGUI
+if stackInfo.nFrames >=5
+        cMin = double(median(stack(:,:,1:5),'all'));
+        cMax = double(quantile(stack(:,:,1:5),0.99,'all'));
+else
+        cMin = double(median(stack(:,:,1),'all'));
+        cMax = double(quantile(stack(:,:,1),0.99,'all'));
+end
+stackInfo.cMin = cMin;
+stackInfo.cMax = cMax;
+        
+
 save(stackPath, 'stack');
 save(stackInfoPath, 'stackInfo');
     
