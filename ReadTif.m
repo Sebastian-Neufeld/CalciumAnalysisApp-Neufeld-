@@ -42,8 +42,6 @@ stackInfo.std = 0;
 stackInfo.cMin = 0;
 stackInfo.cMax = 1;
 stackInfo.substitutedFrames = [];
-stackInfo.ROIs = [];
-stackInfo.ROI_Sizes = [];
 
 
 % tic

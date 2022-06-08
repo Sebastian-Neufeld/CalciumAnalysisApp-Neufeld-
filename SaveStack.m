@@ -19,9 +19,9 @@ stackInfo.Height  = size(stack,1);
 stackInfo.nFrames = size(stack,3);
 
 stackInfo.mean   = mean(stack,3);
-stackInfo.median = median(stack,3);
+stackInfo.median = median(double(stack),3);
 %std only works on single/double
-stackInfo.std    = std(single(stack),0,3);
+stackInfo.std    = std(double(stack),0,3);
 
 % The color bar should be adjusted to the first image, we still
 % take the first five, in case the first one is artefact-ridden
